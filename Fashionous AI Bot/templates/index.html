@@ -1,0 +1,168 @@
+{% extends "base.html" %}
+
+{% block title %}Fashionous BlouseBot — Start{% endblock %}
+
+{% block content %}
+<div class="start-flex-container">
+    <!-- Left: Logo + Video -->
+    <div class="start-video-panel">
+        <img src="{{ url_for('static', filename='logo.jpg') }}" alt="Fashionous Logo" class="start-logo">
+        <video
+            src="{{ url_for('static', filename='videos/Fashionous_Terracotta Jewellery_Explanation.mp4') }}"
+            controls
+            class="start-responsive-video"
+            poster="{{ url_for('static', filename='logo.jpg') }}"
+        >
+            Your browser does not support the video tag.
+        </video>
+        <div class="start-video-caption">
+            <span>Fashionous Terracotta Jewellery</span>
+        </div>
+    </div>
+    <!-- Right: Welcome & Options -->
+    <div class="start-options-panel">
+        <h2 class="start-title">Welcome to Fashionous BlouseBot</h2>
+        <p class="start-desc">
+            Discover your perfect designer blouse! Choose how you want to get recommendations:
+        </p>
+        <div class="start-modes">
+            <a href="{{ url_for('questionnaire_page') }}" class="mode-card">
+                <div style="font-size:2.2rem; margin-bottom:10px;">📝</div>
+                <div style="font-weight:600; font-size:1.1rem;">Guided Questionnaire</div>
+                <div style="color:#64748b; font-size:0.97rem; margin-top:6px;">Answer a few quick questions for tailored suggestions.</div>
+            </a>
+            <a href="{{ url_for('chat_page') }}" class="mode-card">
+                <div style="font-size:2.2rem; margin-bottom:10px;">💬</div>
+                <div style="font-weight:600; font-size:1.1rem;">Chat / Voice</div>
+                <div style="color:#64748b; font-size:0.97rem; margin-top:6px;">Describe your style or speak your needs for instant results.</div>
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_head %}
+<style>
+.start-flex-container {
+    display: flex;
+    flex-direction: row;
+    gap: 48px;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    max-width: 1100px;
+    margin: 48px auto 0 auto;
+    min-height: 70vh;
+    background: rgba(255,255,255,0.97);
+    border-radius: 24px;
+    box-shadow: 0 6px 32px #0001;
+    padding: 32px 24px;
+}
+.start-video-panel {
+    flex: 1 1 340px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 260px;
+    max-width: 400px;
+    background: #f9fbff;
+    border-radius: 18px;
+    box-shadow: 0 2px 12px #0001;
+    padding: 18px 10px 10px 10px;
+}
+.start-logo {
+    max-width: 120px;
+    border-radius: 12px;
+    margin-bottom: 18px;
+    box-shadow: 0 2px 8px #2563eb22;
+}
+.start-responsive-video {
+    width: 100%;
+    max-width: 340px;
+    max-height: 480px;
+    border-radius: 18px;
+    box-shadow: 0 4px 24px #0002;
+    margin-bottom: 12px;
+}
+.start-video-caption {
+    font-size: 1.02rem;
+    color: #64748b;
+    text-align: center;
+    margin-top: 8px;
+    font-style: italic;
+}
+.start-options-panel {
+    flex: 2 1 520px;
+    min-width: 320px;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 2px 12px #0001;
+    padding: 32px 18px 18px 18px;
+}
+.start-title {
+    color: #2563eb;
+    font-size: 2rem;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+    text-align: center;
+}
+.start-desc {
+    font-size: 1.1rem;
+    color: #334155;
+    max-width: 400px;
+    text-align: center;
+    margin-bottom: 32px;
+}
+.start-modes {
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+}
+.mode-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #f9fbff;
+    border: 1.5px solid #e0e7ef;
+    border-radius: 16px;
+    padding: 28px 28px 22px 28px;
+    width: 230px;
+    text-decoration: none;
+    box-shadow: 0 3px 18px #0001;
+    transition: box-shadow 0.2s, border 0.2s, background 0.2s;
+}
+.mode-card:hover {
+    border: 1.5px solid #2563eb;
+    background: #e8f0fe;
+    box-shadow: 0 6px 24px #2563eb22;
+}
+@media (max-width: 1100px) {
+    .start-flex-container {
+        flex-direction: column;
+        align-items: center;
+        padding: 12px 2vw;
+    }
+    .start-video-panel, .start-options-panel {
+        max-width: 98vw;
+        width: 100%;
+        justify-content: center;
+        margin-bottom: 24px;
+    }
+    .start-responsive-video {
+        max-width: 98vw;
+        margin-bottom: 18px;
+    }
+}
+@media (max-width: 700px) {
+    .mode-card { width: 90vw; margin-bottom: 18px; }
+    .start-flex-container { padding: 2vw 0; }
+    .start-options-panel, .start-video-panel { padding: 0; }
+}
+</style>
+{% endblock %}
